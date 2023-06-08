@@ -1,0 +1,9 @@
+
+
+
+.buttons{
+    -fx-alignment: CENTER;
+}
+.buttons:hover{
+    -fx-background-color: #33cc00;
+}

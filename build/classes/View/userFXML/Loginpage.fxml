@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginpageController">
+   <children>
+      <ImageView fitHeight="111.0" fitWidth="1280.0" layoutY="639.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/grad.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="326.0" layoutY="128.0" prefHeight="495.0" prefWidth="628.0" style="-fx-border-radius: 0 0 12pt 12pt; -fx-border-width: 1pt; -fx-border-color: grey;">
+         <children>
+            <TextField fx:id="passwordTF" layoutX="139.0" layoutY="269.0" prefHeight="45.0" prefWidth="350.0" style="-fx-background-radius: 10; -fx-background-color: #224957; -fx-text-fill: white;">
+               <font>
+                  <Font name="Segoe UI Semibold" size="18.0" />
+               </font>
+               <padding>
+                  <Insets left="25.0" />
+               </padding>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <CheckBox contentDisplay="TEXT_ONLY" graphicTextGap="3.0" layoutX="142.0" layoutY="322.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="170.0" text="remember me" textFill="#006800">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </CheckBox>
+            <Button fx:id="loginBtn" layoutX="139.0" layoutY="379.0" mnemonicParsing="false" onAction="#triggerLoginAction" prefHeight="45.0" prefWidth="350.0" style="-fx-background-color: #20DF7F; -fx-background-radius: 10;" styleClass="buttons" text="Login" textFill="#224957">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+               <effect>
+                  <DropShadow blurType="GAUSSIAN" color="#bfbfbf89" height="0.0" offsetY="5.0" radius="3.9725" width="17.89" />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <TextField fx:id="UsernameorEmailTF" layoutX="139.0" layoutY="183.0" prefHeight="45.0" prefWidth="350.0" style="-fx-background-radius: 10; -fx-text-fill: white; -fx-background-color: #224957;" styleClass="textinput">
+               <font>
+                  <Font name="Segoe UI Semibold" size="18.0" />
+               </font>
+               <padding>
+                  <Insets left="25.0" />
+               </padding>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <Label layoutX="141.0" layoutY="152.0" text="Username/Email" textFill="#224957">
+               <font>
+                  <Font name="Segoe UI Semibold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="141.0" layoutY="238.0" text="Password" textFill="#224957">
+               <font>
+                  <Font name="Segoe UI Semibold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="104.0" layoutY="93.0" text="Log in and start managing your Appointments!">
+               <font>
+                  <Font name="Segoe UI Semibold" size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="150.0" layoutY="14.0" prefHeight="85.0" prefWidth="328.0" text="Patient Login" textFill="#224957">
+               <font>
+                  <Font name="Segoe UI Semibold" size="50.0" />
+               </font>
+            </Label>
+            <Button fx:id="logAsAdminBtn" layoutX="317.0" layoutY="439.0" mnemonicParsing="false" onAction="#LogAsAdminAction" prefHeight="43.0" prefWidth="170.0" style="-fx-background-color: none; -fx-border-radius: 6; -fx-border-width: 2; -fx-border-color: #224957;" styleClass="buttons" text="Login as Admin">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label layoutX="137.0" layoutY="439.0" prefHeight="43.0" prefWidth="170.0" text="got Administration?">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Button fx:id="LoginTab" layoutX="326.0" layoutY="79.0" mnemonicParsing="false" onAction="#goToLoginTab" prefHeight="40.0" prefWidth="314.0" style="-fx-border-radius: 6pt 6pt 0 0; -fx-background-color: #224957; -fx-background-radius: 6pt 6pt 0 0; -fx-border-width: 1pt; -fx-border-color: grey;" text="Login" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="registerTab" layoutX="640.0" layoutY="79.0" mnemonicParsing="false" onAction="#goToRegTab" prefHeight="40.0" prefWidth="314.0" style="-fx-border-radius: 6pt 6pt 0 0; -fx-background-color: transparent; -fx-background-radius: 6pt 6pt 0 0; -fx-border-width: 1pt; -fx-border-color: grey;" text="Register">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>

@@ -1,0 +1,28 @@
+.text-input-bar{
+    
+    -fx-background-color: transparent;
+    -fx-border-color: #1B4639;
+    -fx-border-width: 1pt;
+    -fx-font-size: 15pt;
+}
+
+
+.input-label{
+   -fx-font-size: 16pt;
+}
+.radio-btn{
+   -fx-font-size: 13pt;
+}
+
+.big-label{
+    -fx-font-size: 24pt;
+    -fx-font-weight: bold;
+}
+.text-input-bar-mini{
+    
+    -fx-background-color: transparent;
+    -fx-border-color: #1B4639;
+    -fx-border-width: 1pt;
+    -fx-font-size: 13pt;
+}
+
