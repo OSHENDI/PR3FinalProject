@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PatientPageController">
+    <stylesheets>
+        <URL value="@/CSS/appointmentspage.css" />
+    </stylesheets>
+   <children>
+      <AnchorPane id="AnchorPane" fx:id="StageContainer" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../CSS/homepage.css">
+         <children>
+            <AnchorPane prefHeight="720.0" prefWidth="234.0" style="-fx-background-color: #2F2F2F; -fx-background-radius: 0 8pt 8pt 0;" stylesheets="@../../CSS/homepage.css">
+               <children>
+                  <Label layoutX="44.0" layoutY="23.0" text="Greetings" textFill="WHITE">
+                     <font>
+                        <Font name="Lucida Sans Demibold" size="31.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="AppointsBtn" alignment="BASELINE_LEFT" layoutX="6.0" layoutY="260.0" mnemonicParsing="false" onAction="#GoToAppointTab" prefHeight="60.0" prefWidth="219.0" stylesheets="@../../CSS/homepage.css" text="Appointments">
+                     <font>
+                        <Font name="Poppins Medium" size="18.0" />
+                     </font>
+                     <padding>
+                        <Insets left="55.0" />
+                     </padding>
+                     <styleClass>
+                        <String fx:value="sideItemActive" />
+                        <String fx:value="curvy-radius" />
+                     </styleClass>
+                  </Button>
+                  <Button fx:id="LogoutBtn" alignment="CENTER_RIGHT" layoutX="37.0" layoutY="524.0" mnemonicParsing="false" onAction="#LogoutAccount" prefHeight="60.0" prefWidth="147.0" text="Logout">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="19.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="sideItemSpecial" />
+                        <String fx:value="curvy-radius" />
+                     </styleClass>
+                  </Button>
+                  <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="59.0" layoutY="537.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/logout.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="45.0" fitWidth="40.0" layoutX="12.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/editicon.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="userLabel" alignment="CENTER" ellipsisString="" layoutX="21.0" layoutY="76.0" prefHeight="36.0" prefWidth="184.0" styleClass="linear-gradient" stylesheets="@../../CSS/inputStyles.css" text="User" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="23.0" />
+                     </font>
+                  </Label>
+               </children>
+               <effect>
+                  <DropShadow color="#909090" height="0.0" radius="3.9725" spread="0.1" width="17.89" />
+               </effect>
+            </AnchorPane>
+            <AnchorPane fx:id="PageContainer" layoutX="238.0" layoutY="22.0" prefHeight="683.0" prefWidth="1036.0" stylesheets="@../../CSS/homepage.css">
+               <children>
+                  <GridPane layoutX="14.0" layoutY="13.0" prefHeight="657.0" prefWidth="1016.0" stylesheets="@../../CSS/homepage.css">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="664.0" minWidth="10.0" prefWidth="193.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="753.0" minWidth="10.0" prefWidth="325.0" />
+                        <ColumnConstraints />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="172.0" minHeight="0.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="260.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="311.0" minHeight="10.0" prefHeight="291.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="138.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="99.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button fx:id="bookFreeBtn" mnemonicParsing="false" onAction="#bookFreeAppoint" prefHeight="47.0" prefWidth="273.0" text="Book free Appointment" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                           <styleClass>
+                              <String fx:value="actionButton" />
+                              <String fx:value="standard-radius" />
+                              <String fx:value="bg-info" />
+                           </styleClass>
+                        </Button>
+                        <TableView fx:id="patientTV" prefHeight="499.0" prefWidth="743.0" style="-fx-text-fill: blue;" GridPane.columnSpan="3" GridPane.rowIndex="2" GridPane.rowSpan="3">
+                          <columns>
+                            <TableColumn fx:id="id" prefWidth="66.0" text="ID" />
+                            <TableColumn fx:id="apptDate" prefWidth="159.0" text="Apoointment Date" />
+                              <TableColumn fx:id="apptDay" minWidth="0.0" prefWidth="175.0" text="Appointment Day" />
+                              <TableColumn fx:id="apptTime" prefWidth="185.0" text="Apoointment Time" />
+                              <TableColumn fx:id="status" prefWidth="264.0" text="Status" />
+                              <TableColumn fx:id="comment" prefWidth="166.0" text="Comment" />
+                          </columns>
+                        </TableView>
+                        <Button mnemonicParsing="false" onAction="#showAllFreeAppointments" prefHeight="47.0" prefWidth="313.0" text="Show all free Appointments" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                           <styleClass>
+                              <String fx:value="actionButton" />
+                              <String fx:value="standard-radius" />
+                              <String fx:value="bg-primary" />
+                           </styleClass>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#showAllBookedFinishedAppointment" prefHeight="47.0" prefWidth="407.0" text="show all booked finished appointments" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                           <styleClass>
+                              <String fx:value="actionButton" />
+                              <String fx:value="standard-radius" />
+                              <String fx:value="bg-primary" />
+                           </styleClass>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#showAllBookedWaitingAppointment" prefHeight="47.0" prefWidth="407.0" text="show all booked waiting appointments" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                           <styleClass>
+                              <String fx:value="actionButton" />
+                              <String fx:value="standard-radius" />
+                              <String fx:value="bg-primary" />
+                           </styleClass>
+                        </Button>
+                     </children>
+                  </GridPane>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <styleClass>
+                  <String fx:value="content-box" />
+                  <String fx:value="curvy-radius" />
+               </styleClass>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

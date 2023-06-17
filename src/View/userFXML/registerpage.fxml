@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RegisterpageController">
+   <children>
+      <ImageView fitHeight="111.0" fitWidth="1280.0" layoutY="639.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/grad.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="326.0" layoutY="128.0" prefHeight="495.0" prefWidth="628.0" style="-fx-border-radius: 0 0 12pt 12pt; -fx-border-width: 1pt; -fx-border-color: grey;">
+         <children>
+            <Button fx:id="registerPatientBtn" layoutX="139.0" layoutY="409.0" mnemonicParsing="false" onAction="#RegisterPatientAction" prefHeight="45.0" prefWidth="350.0" style="-fx-background-color: #20DF7F; -fx-background-radius: 10;" styleClass="buttons" text="Register" textFill="#224957">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+               <effect>
+                  <DropShadow blurType="GAUSSIAN" color="#bfbfbf89" height="0.0" offsetY="5.0" radius="3.9725" width="17.89" />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label layoutX="91.0" layoutY="70.0" text="Register and start managing your Appointments!">
+               <font>
+                  <Font name="Segoe UI Semibold" size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="123.0" prefHeight="85.0" prefWidth="381.0" text="Patient Register" textFill="#224957">
+               <font>
+                  <Font name="Segoe UI Semibold" size="43.0" />
+               </font>
+            </Label>
+            <TextField fx:id="patientFname" layoutX="34.0" layoutY="136.0" prefHeight="45.0" prefWidth="265.0" style="-fx-background-radius: 10; -fx-text-fill: white; -fx-background-color: #224957;" styleClass="textinput">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <font>
+                  <Font name="Segoe UI Semibold" size="18.0" />
+               </font>
+               <padding>
+                  <Insets left="25.0" />
+               </padding>
+            </TextField>
+            <Label layoutX="39.0" layoutY="103.0" text="First Name" textFill="#224957">
+               <font>
+                  <Font name="Segoe UI Semibold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="32.0" layoutY="187.0" text="Last Name" textFill="#224957">
+               <font>
+                  <Font name="Segoe UI Semibold" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="patientLname" layoutX="34.0" layoutY="222.0" prefHeight="45.0" prefWidth="265.0" style="-fx-background-radius: 10; -fx-text-fill: white; -fx-background-color: #224957;" styleClass="textinput">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <font>
+                  <Font name="Segoe UI Semibold" size="18.0" />
+               </font>
+               <padding>
+                  <Insets left="25.0" />
+               </padding>
+            </TextField>
+            <RadioButton fx:id="maleRB" layoutX="45.0" layoutY="328.0" mnemonicParsing="false" text="Male">
+               <font>
+                  <Font name="Lucida Sans Demibold" size="15.0" />
+               </font></RadioButton>
+            <Label layoutX="329.0" layoutY="103.0" text="E-mail" textFill="#224957">
+               <font>
+                  <Font name="Segoe UI Semibold" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="patientEmail" layoutX="329.0" layoutY="136.0" prefHeight="45.0" prefWidth="265.0" style="-fx-background-radius: 10; -fx-text-fill: white; -fx-background-color: #224957;" styleClass="textinput">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <font>
+                  <Font name="Segoe UI Semibold" size="18.0" />
+               </font>
+               <padding>
+                  <Insets left="25.0" />
+               </padding>
+            </TextField>
+            <RadioButton fx:id="femaleRB" layoutX="119.0" layoutY="328.0" mnemonicParsing="false" text="Female">
+               <font>
+                  <Font name="Lucida Sans Demibold" size="15.0" />
+               </font></RadioButton>
+            <Label layoutX="39.0" layoutY="290.0" text="Gender:" textFill="#224957">
+               <font>
+                  <Font name="Segoe UI Semibold" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="patientPhone" layoutX="213.0" layoutY="316.0" prefHeight="45.0" prefWidth="220.0" style="-fx-background-radius: 10; -fx-text-fill: white; -fx-background-color: #224957;" styleClass="textinput">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <font>
+                  <Font name="Segoe UI Semibold" size="18.0" />
+               </font>
+               <padding>
+                  <Insets left="25.0" />
+               </padding>
+            </TextField>
+            <Label layoutX="213.0" layoutY="284.0" text="Phone" textFill="#224957">
+               <font>
+                  <Font name="Segoe UI Semibold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="456.0" layoutY="284.0" text="Age" textFill="#224957">
+               <font>
+                  <Font name="Segoe UI Semibold" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="patientAge" alignment="CENTER" layoutX="456.0" layoutY="316.0" prefHeight="45.0" prefWidth="133.0" style="-fx-background-radius: 10; -fx-text-fill: white; -fx-background-color: #224957;" styleClass="textinput">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <font>
+                  <Font name="Segoe UI Semibold" size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="PatientPassword" layoutX="329.0" layoutY="222.0" prefHeight="45.0" prefWidth="265.0" style="-fx-background-radius: 10; -fx-text-fill: white; -fx-background-color: #224957;" styleClass="textinput">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <font>
+                  <Font name="Segoe UI Semibold" size="18.0" />
+               </font>
+               <padding>
+                  <Insets left="25.0" />
+               </padding>
+            </TextField>
+            <Label layoutX="329.0" layoutY="187.0" text="Password" textFill="#224957">
+               <font>
+                  <Font name="Segoe UI Semibold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Button fx:id="LoginTab" layoutX="326.0" layoutY="79.0" mnemonicParsing="false" onAction="#goToLoginTab" prefHeight="40.0" prefWidth="314.0" style="-fx-border-radius: 6pt 6pt 0 0; -fx-background-color: transparent; -fx-background-radius: 6pt 6pt 0 0; -fx-border-width: 1pt; -fx-border-color: grey;" text="Login">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="registerTab" layoutX="640.0" layoutY="79.0" mnemonicParsing="false" onAction="#goToRegTab" prefHeight="40.0" prefWidth="314.0" style="-fx-border-radius: 6pt 6pt 0 0; -fx-background-color: #224957; -fx-background-radius: 6pt 6pt 0 0; -fx-border-width: 1pt; -fx-border-color: grey;" text="Register" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>

@@ -1,3 +1,5 @@
+
+
 .text-input-bar{
     
     -fx-background-color: transparent;
@@ -25,4 +27,9 @@
     -fx-border-width: 1pt;
     -fx-font-size: 13pt;
 }
+
+.linear-gradient {
+    -fx-background-color: linear-gradient(to right, transparent, #2f2f2f);
+}
+
 

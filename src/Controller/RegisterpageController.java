@@ -15,11 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 
 
-/**
- * FXML Controller class
- *
- * @author hp
- */
+
 public class RegisterpageController implements Initializable {
 
     @FXML
@@ -46,6 +42,8 @@ public class RegisterpageController implements Initializable {
     ArrayList<String> patientInfo;
     @FXML
     private TextField PatientPassword;
+    
+    
 
     /**
      * Initializes the controller class.
@@ -87,7 +85,8 @@ public class RegisterpageController implements Initializable {
           
           boolean isadded =  PersistenceManager.getInstance().persistEntity(user);
           if(isadded){
-          Swal.ShowSuccessAlert("Added Successfully!");
+              LoginpageController.USERSLIST.add(user);
+          Swal.ShowSuccessAlert("Added");
           patientInfo.clear();
           
           }else{
