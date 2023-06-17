@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -29,6 +30,7 @@ import javax.persistence.TypedQuery;
 
 public class HomePageController implements Initializable {
 
+    public static Users current_user;
     @FXML
     private Button AppointsBtn;
     @FXML
@@ -73,17 +75,21 @@ public class HomePageController implements Initializable {
     private AnchorPane PageContainer;
     @FXML
     private AnchorPane StageContainer;
-    
-     public static boolean isDarkEnabled;
-  
+
+    public static boolean isDarkEnabled;
+    @FXML
+    private Label userLabel;
+
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        userLabel.setText("Mr." + (current_user.getFirstname() + " " + current_user.getLastname()).toUpperCase());;
         idCol.setCellValueFactory(new PropertyValueFactory("id"));
         firstNameCol.setCellValueFactory(new PropertyValueFactory("firstname"));
         LastNameCol.setCellValueFactory(new PropertyValueFactory("lastname"));
@@ -95,7 +101,7 @@ public class HomePageController implements Initializable {
     }
 
     @FXML
-    private void GoToAppointTab(ActionEvent event) {
+    private void GoToAppointTab(ActionEvent event) throws IOException {
         View.ViewManager.homePage.changeSceneToAppointPage();
     }
 
@@ -111,7 +117,9 @@ public class HomePageController implements Initializable {
 
     @FXML
     private void LogoutAccount(ActionEvent event) throws IOException {
+        current_user = null;
         View.ViewManager.closeHomePage();
+        View.ViewManager.homePage = null;
         View.ViewManager.openLoginPage();
     }
 
@@ -129,7 +137,7 @@ public class HomePageController implements Initializable {
     private void switchToDarkMode(ActionEvent event) {
         isDarkEnabled = true;
         Settings.getInstance().setDarkModeEnabled(isDarkEnabled);
-        
+
         PageContainer.getStyleClass().add("darkmode");
         lightModeBtn.getStyleClass().remove("activetheme");
         darkModeBtn.getStyleClass().add("activetheme");
@@ -137,13 +145,15 @@ public class HomePageController implements Initializable {
     }
 
     @FXML
-    private void GoToAddPatient() {
+    private void GoToAddPatient() throws IOException {
+        View.HomePage.PatientControlPage = null;
         View.ViewManager.homePage.changeSceneToPatientControlPage();
 
     }
 
     @FXML
     private void ShowAllPatients(ActionEvent event) {
+        userTableView.getItems().clear();
         List<Users> usersList = Users.getUsersList();
         userTableView.setItems(FXCollections.observableArrayList(usersList));
 
@@ -153,9 +163,10 @@ public class HomePageController implements Initializable {
     private void DelUserAction(ActionEvent event) throws IllegalOrphanException, NonexistentEntityException {
         if (userTableView.getSelectionModel().getSelectedItem() != null) {
             if (Swal.showConfirmAlert("You are about to delete this account, proceed?")) {
-                UsersJpaController usercontroller
-                        = new UsersJpaController(PersistenceManager.getInstance().getEntityManagerFactory());
-                usercontroller.destroy(userTableView.getSelectionModel().getSelectedItem().getId());
+//                UsersJpaController usercontroller
+//                        = new UsersJpaController(PersistenceManager.getInstance().getEntityManagerFactory());
+//                usercontroller.destroy(userTableView.getSelectionModel().getSelectedItem().getId());
+                PersistenceManager.getInstance().deleteUserById(userTableView.getSelectionModel().getSelectedItem().getId());
                 Swal.ShowSuccessAlert("Deleted");
                 userTableView.getItems().remove(userTableView.getSelectionModel().getSelectedItem());
             }
@@ -181,20 +192,22 @@ public class HomePageController implements Initializable {
                 entityManager.close();
             }
         } else {
-            Swal.showWarningAlert("Search field is Empty!","you have to enter a search term first");
+            Swal.showWarningAlert("Search field is Empty!", "you have to enter a search term first");
         }
     }
 
     @FXML
     private void GoToUpdateScene(ActionEvent event) throws IOException {
-           Users usertoEdit = userTableView.getSelectionModel().getSelectedItem();
-        if(usertoEdit!= null){
-//          GoToAddPatient();
+        Users usertoEdit = userTableView.getSelectionModel().getSelectedItem();
+        if (usertoEdit != null) {
+            PatientControlPageController.userData = usertoEdit;
+            View.HomePage.PatientControlPage = null;
+            GoToAddPatient();
         }
     }
-    
-  static public boolean getThemeStatus(){
-   return  isDarkEnabled;
-   }
+
+    static public boolean getThemeStatus() {
+        return isDarkEnabled;
+    }
 
 }

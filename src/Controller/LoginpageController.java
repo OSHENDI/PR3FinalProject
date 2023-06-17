@@ -12,7 +12,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-
 public class LoginpageController implements Initializable {
 
     @FXML
@@ -35,6 +34,7 @@ public class LoginpageController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         ADMINSLIST = Users.getAdminsList();
         USERSLIST = Users.getUsersList();
+
     }
 
     @FXML
@@ -50,20 +50,17 @@ public class LoginpageController implements Initializable {
     @FXML
     private void triggerLoginAction(ActionEvent event) throws IOException { //Patient Login action
 
-        
-//        for (Users users : USERSLIST) {
-//            System.out.println(users.getEmail()+" - "+users.getPassword());
-//        }
         if (validateLoginDetails(USERSLIST) == true) {
             UsernameorEmailTF.clear();
             passwordTF.clear();
-            System.out.println("User is granted access to go to his page!");
+
+            View.ViewManager.closeLoginPage();
+            View.ViewManager.openPatientHomePage();
         } else {
-            System.out.println("Denied User cuz wrong or empty");
+            Swal.ShowErrorAlert();
+
         }
 
-//        View.ViewManager.closeLoginPage();
-//        View.ViewManager.openPatientHomePage();
     }
 
     @FXML
@@ -86,14 +83,19 @@ public class LoginpageController implements Initializable {
         String username = UsernameorEmailTF.getText().trim();
         String pass = passwordTF.getText().trim();
 
-        if (ALL_USERS_LIST
-                .stream()
-                .anyMatch
-        (users -> ((username.equals(users.getUsername()) || username.equals(users.getEmail()) )
-                && pass.equals(users.getPassword())))) {
-            return true;
+        for (Users users : ALL_USERS_LIST) {
+            if (((username.equals(users.getUsername()) || username.equals(users.getEmail()))
+                    && pass.equals(users.getPassword()))) {
+                if (users.getRole().equals("admin")) {
+                    HomePageController.current_user = users;
+                } else {
+                    PatientPageController.current_User = users;
+                }
+
+                return true;
+            }
         }
-        
+
         return false;
     }
 

@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="ManagementSystem.jar" size="375570" download="eager" />
+    <jar href="ManagementSystem.jar" size="398897" download="eager" />
     <jar href="lib\javax.persistence-2.1.0.jar" size="162126" download="eager" />
     <jar href="lib\mysql-connector-java-8.0.17.jar" size="2321813" download="eager" />
     <jar href="lib\org.eclipse.persistence.antlr-2.5.2.jar" size="189645" download="eager" />

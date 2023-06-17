@@ -223,12 +223,12 @@
                               <String fx:value="text-input-bar" />
                            </styleClass>
                         </TextField>
-                        <RadioButton mnemonicParsing="false" selected="true" styleClass="radio-btn" text="Male" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                        <RadioButton fx:id="malerb" mnemonicParsing="false" selected="true" styleClass="radio-btn" text="Male" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                            <GridPane.margin>
                               <Insets right="110.0" top="30.0" />
                            </GridPane.margin>
                         </RadioButton>
-                        <RadioButton mnemonicParsing="false" styleClass="radio-btn" text="Female" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                        <RadioButton fx:id="femalerb" mnemonicParsing="false" styleClass="radio-btn" text="Female" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                            <GridPane.margin>
                               <Insets left="70.0" top="30.0" />
                            </GridPane.margin>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 11, 2023 at 07:38 PM
+-- Generation Time: Jun 17, 2023 at 09:30 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -29,11 +29,18 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `appointments` (
   `id` int(11) NOT NULL,
-  `appointment_date` date NOT NULL,
+  `appointment_date` varchar(40) NOT NULL,
   `appointment_day` varchar(30) NOT NULL,
-  `appointment_time` time NOT NULL,
+  `appointment_time` varchar(30) NOT NULL,
   `status` enum('free','booked') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `appointments`
+--
+
+INSERT INTO `appointments` (`id`, `appointment_date`, `appointment_day`, `appointment_time`, `status`) VALUES
+(18, '2023-03-01', 'monday', '2:50', 'free');
 
 -- --------------------------------------------------------
 
@@ -43,9 +50,9 @@ CREATE TABLE `appointments` (
 
 CREATE TABLE `booked_appointments` (
   `id` int(11) NOT NULL,
-  `appointment_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `doctor_comment` varchar(50) NOT NULL,
+  `appointment_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `doctor_comment` varchar(50) DEFAULT '',
   `status` enum('waiting','finished') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -73,12 +80,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `firstname`, `lastname`, `age`, `email`, `phone`, `gender`, `role`) VALUES
-(12, NULL, NULL, 'kalil', 'barhoom', 25, 'omalalaa@gm.co', '765', 'male', 'patient'),
-(14, 'mark', 'mark123', 'mark', 'zuckerberg', 24, 'mark@g.co', '6889', 'male', 'admin'),
-(16, NULL, NULL, 'salem', 'hosni', 26, 'saleem@gm.com', '547', 'female', 'patient'),
-(17, 'tamer', 'tamer123', 'tamer', 'halawa', 20, 'tamoor@gm.com', '123', 'female', 'admin'),
-(21, NULL, NULL, 'hello', 'party', 23, 'people@gm.com', '0595000049', 'male', 'patient'),
-(23, NULL, '123456', 'dam', 'boi', 1, 'istest@g.co', '0593', 'female', 'patient');
+(31, 'maher', 'maher123', 'maher', 'jamal', 23, 'maher@gmail.com', '0595', 'male', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -118,19 +120,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `booked_appointments`
 --
 ALTER TABLE `booked_appointments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- Constraints for dumped tables
@@ -140,8 +142,8 @@ ALTER TABLE `users`
 -- Constraints for table `booked_appointments`
 --
 ALTER TABLE `booked_appointments`
-  ADD CONSTRAINT `booked_appointments_ibfk_1` FOREIGN KEY (`appointment_id`) REFERENCES `appointments` (`id`),
-  ADD CONSTRAINT `booked_appointments_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `booked_appointments_ibfk_1` FOREIGN KEY (`appointment_id`) REFERENCES `appointments` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `booked_appointments_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

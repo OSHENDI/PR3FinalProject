@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
-<?import java.net.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AppointmentsPageController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AppointControlPageController">
     <stylesheets>
-        <URL value="@/CSS/appointmentspage.css" />
+        <URL value="@/CSS/patientcontrolpage.css" />
     </stylesheets>
    <children>
-      <AnchorPane id="AnchorPane" fx:id="StageContainer" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../CSS/homepage.css">
+      <AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" styleClass="mainFxmlClass">
          <children>
             <AnchorPane prefHeight="720.0" prefWidth="340.0" style="-fx-background-color: #2F2F2F; -fx-background-radius: 0 8pt 8pt 0;" stylesheets="@../../CSS/homepage.css">
                <children>
-                  <Label layoutX="86.0" layoutY="23.0" text="Greetings" textFill="WHITE">
+                  <Label layoutX="113.0" layoutY="23.0" text="Home &gt; " textFill="WHITE">
                      <font>
                         <Font name="Lucida Sans Demibold" size="31.0" />
                      </font>
@@ -45,8 +45,9 @@
                         <Insets left="55.0" />
                      </padding>
                      <styleClass>
-                        <String fx:value="sideItemActive" />
+                        <String fx:value="sideItem" />
                         <String fx:value="curvy-radius" />
+                        <String fx:value="sideItemActive" />
                      </styleClass>
                   </Button>
                   <Button fx:id="AccBtn" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="339.0" mnemonicParsing="false" onAction="#GoToAccountPage" prefHeight="60.0" prefWidth="320.0" text="Account">
@@ -90,7 +91,7 @@
                         <Image url="@../../images/editicon.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="53.0" layoutY="78.0" prefHeight="27.0" prefWidth="235.0" text="SDA" textFill="WHITE">
+                  <Label layoutX="48.0" layoutY="74.0" prefHeight="27.0" prefWidth="222.0" text="Control Appointment" textFill="WHITE">
                      <font>
                         <Font name="Arial" size="23.0" />
                      </font>
@@ -103,7 +104,6 @@
                            </padding>
                            <styleClass>
                               <String fx:value="theme-buttons" />
-                              <String fx:value="activetheme" />
                               <String fx:value="standard-radius" />
                            </styleClass>
                         </Button>
@@ -113,6 +113,7 @@
                            </padding>
                            <styleClass>
                               <String fx:value="theme-buttons" />
+                              <String fx:value="activetheme" />
                               <String fx:value="standard-radius" />
                            </styleClass>
                         </Button>
@@ -133,49 +134,30 @@
                   <DropShadow color="#909090" height="0.0" radius="3.9725" spread="0.1" width="17.89" />
                </effect>
             </AnchorPane>
-            <AnchorPane fx:id="PageContainer" layoutX="358.0" layoutY="23.0" prefHeight="682.0" prefWidth="917.0" stylesheets="@../../CSS/homepage.css">
+            <AnchorPane layoutX="358.0" layoutY="19.0" prefHeight="686.0" prefWidth="916.0">
                <children>
-                  <GridPane layoutX="18.0" layoutY="30.0" prefHeight="629.0" prefWidth="879.0" stylesheets="@../../CSS/homepage.css">
+                  <GridPane layoutX="182.0" layoutY="101.0" prefHeight="545.0" prefWidth="553.0" styleClass="inputs-grid" stylesheets="@../../CSS/homepage.css">
                     <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="664.0" minWidth="10.0" prefWidth="292.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="753.0" minWidth="10.0" prefWidth="293.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="753.0" minWidth="10.0" prefWidth="293.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="664.0" minWidth="10.0" prefWidth="260.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="664.0" minWidth="10.0" prefWidth="260.0" />
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints maxHeight="172.0" minHeight="0.0" prefHeight="45.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="260.0" minHeight="10.0" prefHeight="215.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="138.0" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="99.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="172.0" minHeight="0.0" prefHeight="102.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="281.0" minHeight="10.0" prefHeight="88.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="424.0" minHeight="10.0" prefHeight="175.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button mnemonicParsing="false" onAction="#createNewAppointmentAction" prefHeight="47.0" prefWidth="283.0" text="Create new Appointment" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                           <styleClass>
-                              <String fx:value="actionButton" />
-                              <String fx:value="standard-radius" />
-                              <String fx:value="bg-info" />
-                           </styleClass>
-                        </Button>
-                        <TableView fx:id="AppointsTV" prefHeight="0.0" prefWidth="588.0" style="-fx-text-fill: blue;" GridPane.columnSpan="3" GridPane.rowIndex="1" GridPane.rowSpan="3">
-                          <columns>
-                            <TableColumn fx:id="id" prefWidth="94.0" text="id" />
-                            <TableColumn fx:id="apptDate" prefWidth="156.0" text="appointment_date" />
-                              <TableColumn fx:id="apptDay" minWidth="0.0" prefWidth="195.0" text="appointment_day" />
-                              <TableColumn fx:id="apptTime" prefWidth="265.0" text="appointment time" />
-                              <TableColumn fx:id="status" prefWidth="168.0" text="status" />
-                          </columns>
-                        </TableView>
-                        <Button mnemonicParsing="false" onAction="#updateAppoint" prefHeight="45.0" prefWidth="140.0" text="Update" GridPane.halignment="LEFT" GridPane.rowIndex="4">
+                        <Button fx:id="AddAppointBtn" mnemonicParsing="false" onAction="#AddAppointAction" prefHeight="45.0" prefWidth="240.0" text="Confirm" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                            <styleClass>
                               <String fx:value="actionButton" />
                               <String fx:value="standard-radius" />
                               <String fx:value="bg-green" />
                            </styleClass>
                            <padding>
-                              <Insets left="30.0" />
+                              <Insets left="45.0" />
                            </padding>
                         </Button>
-                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#deleteAppoint" prefHeight="45.0" prefWidth="140.0" style="-fx-text-fill: #990011;" text="Delete" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                        <Button fx:id="cancelBtn" alignment="CENTER" mnemonicParsing="false" onAction="#CancelAddAppoint" prefHeight="45.0" prefWidth="240.0" style="-fx-text-fill: #990011;" text="Cancel" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                            <styleClass>
                               <String fx:value="actionButton" />
                               <String fx:value="standard-radius" />
@@ -188,41 +170,74 @@
                               <Insets />
                            </opaqueInsets>
                            <padding>
-                              <Insets left="30.0" />
+                              <Insets left="25.0" />
                            </padding>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#goToBookedAppoints" prefHeight="47.0" prefWidth="299.0" text="Show Booked Appointments" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                           <styleClass>
-                              <String fx:value="actionButton" />
-                              <String fx:value="standard-radius" />
-                              <String fx:value="bg-primary" />
-                           </styleClass>
-                        </Button>
-                        <ImageView fitHeight="33.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                        <ImageView fitHeight="33.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                            <image>
-                              <Image url="@../../images/delete.png" />
+                              <Image url="@../../images/cancel.png" />
                            </image>
                            <GridPane.margin>
-                              <Insets right="90.0" />
+                              <Insets left="75.0" />
                            </GridPane.margin>
                         </ImageView>
-                        <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="LEFT" GridPane.rowIndex="4">
+                        <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="LEFT" GridPane.rowIndex="2">
                            <image>
-                              <Image url="@../../images/updater.png" />
+                              <Image url="@../../images/addtick.png" />
                            </image>
                            <GridPane.margin>
-                              <Insets left="17.0" />
+                              <Insets left="90.0" />
                            </GridPane.margin>
                         </ImageView>
-                        <Button mnemonicParsing="false" onAction="#showFreeAppoints" prefHeight="47.0" prefWidth="284.0" text="Show Free Appointments" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <TextField fx:id="DateTF" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="45.0" prefWidth="250.0" promptText="2023-01-01" stylesheets="@../../CSS/inputStyles.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                            <styleClass>
-                              <String fx:value="actionButton" />
                               <String fx:value="standard-radius" />
-                              <String fx:value="bg-primary" />
+                              <String fx:value="text-input-bar" />
                            </styleClass>
-                        </Button>
+                        </TextField>
+                        <TextField fx:id="timeTF" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="45.0" prefWidth="528.0" promptText="8:00:00" stylesheets="@../../CSS/inputStyles.css" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+                           <styleClass>
+                              <String fx:value="standard-radius" />
+                              <String fx:value="text-input-bar" />
+                           </styleClass>
+                        </TextField>
+                        <TextField fx:id="DayTF" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="45.0" prefWidth="250.0" promptText="Enter Day" stylesheets="@../../CSS/inputStyles.css" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                           <styleClass>
+                              <String fx:value="standard-radius" />
+                              <String fx:value="text-input-bar" />
+                           </styleClass>
+                        </TextField>
+                        <Label styleClass="input-label" stylesheets="@../../CSS/inputStyles.css" text="Day" GridPane.valignment="CENTER">
+                           <GridPane.margin>
+                              <Insets bottom="40.0" left="20.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="21.0" />
+                           </font>
+                        </Label>
+                        <Label styleClass="input-label" stylesheets="@../../CSS/inputStyles.css" text="Date" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets bottom="40.0" left="20.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="21.0" />
+                           </font>
+                        </Label>
+                        <Label styleClass="input-label" stylesheets="@../../CSS/inputStyles.css" text="Time" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets bottom="40.0" left="20.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="21.0" />
+                           </font>
+                        </Label>
                      </children>
                   </GridPane>
+                  <Label fx:id="headerLabel" layoutX="301.0" layoutY="28.0" styleClass="big-label" text="Control Appointment">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </Label>
                </children>
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
@@ -231,6 +246,10 @@
                   <String fx:value="content-box" />
                   <String fx:value="leaf-radius" />
                </styleClass>
+               <stylesheets>
+                  <URL value="@../../CSS/homepage.css" />
+                  <URL value="@../../CSS/inputStyles.css" />
+               </stylesheets>
             </AnchorPane>
          </children>
       </AnchorPane>

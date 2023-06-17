@@ -5,8 +5,10 @@
  */
 package Controller;
 
+import Controller.exceptions.NonexistentEntityException;
 import Model.PersistenceManager;
 import Model.Users;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -15,7 +17,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Toggle;
+import javafx.scene.control.ToggleGroup;
 
 /**
  * FXML Controller class
@@ -53,18 +58,41 @@ public class PatientControlPageController implements Initializable {
     @FXML
     private static Label headerLabel;
 
-     private Users userData;
-    /**
-     * Initializes the controller class.
-     */
+    public static Users userData;
+
+    public ToggleGroup toggleGroup;
+    @FXML
+    private RadioButton malerb;
+    @FXML
+    private RadioButton femalerb;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
+        toggleGroup = new ToggleGroup();
+        malerb.setToggleGroup(toggleGroup);
+        femalerb.setToggleGroup(toggleGroup);
+
+        if (userData != null) {
+
+            firstNameTF.setText(userData.getFirstname());
+            lastNameTF.setText(userData.getLastname());
+            emailTF.setText(userData.getEmail());
+            ageTF.setText(userData.getAge() + "");
+            phoneTF.setText(userData.getPhone());
+            if (userData.getGender().equals("male")) {
+                malerb.setSelected(true);
+            } else {
+                femalerb.setSelected(true);
+            }
+
+        } else {
+            clearInputs();
+
+        }
+
     }
 
-   public static void editHeader(String str){
-   headerLabel.setText(str);
-   }
     @FXML
     private void GoToManagementTab(ActionEvent event) {
         View.ViewManager.homePage.changeSceneToHomePage();
@@ -72,7 +100,7 @@ public class PatientControlPageController implements Initializable {
     }
 
     @FXML
-    private void GoToAppointTab(ActionEvent event) {
+    private void GoToAppointTab(ActionEvent event) throws IOException {
         View.ViewManager.homePage.changeSceneToAppointPage();
     }
 
@@ -97,31 +125,61 @@ public class PatientControlPageController implements Initializable {
     private void CancelAddPatient() {
         if (Swal.showConfirmAlert("You have unsaved changes that will be reverted,proceed?")) {
             clearInputs();
-        View.ViewManager.homePage.changeSceneToHomePage();
+            View.ViewManager.homePage.changeSceneToHomePage();
         }
-        
 
     }
 
     @FXML
-    private void AddPatientAction(ActionEvent event) {
-        Users user = new Users();
-        user.setFirstname(firstNameTF.getText());
-        user.setLastname(lastNameTF.getText());
-        user.setAge(Integer.parseInt(ageTF.getText()));
-        user.setEmail(emailTF.getText());
-        user.setPhone(phoneTF.getText());
+    private void AddPatientAction() throws NonexistentEntityException, Exception {
+        boolean accepted = false;
+        if (userData == null) {
+            Users user = new Users();
+            user.setFirstname(firstNameTF.getText());
+            user.setLastname(lastNameTF.getText());
+            user.setAge(Integer.parseInt(ageTF.getText()));
+            user.setEmail(emailTF.getText());
+            user.setPhone(phoneTF.getText());
 
-        user.setGender("male"); //Changing  it Later
-        user.setRole("patient");
+            user.setGender(malerb.isSelected() ? "male" : "female"); // if male radio btn selected => male ... else female
+            user.setRole("patient");
+            accepted = PersistenceManager.getInstance().persistEntity(user);
+            if (accepted) {
+                Swal.ShowSuccessAlert("created");
+                clearInputs();
+            } else {
+                Swal.ShowErrorAlert();
+            }
 
-        boolean accepted = PersistenceManager.getInstance().persistEntity(user);
-        if (accepted) {
-            Swal.ShowSuccessAlert("created");
-            clearInputs();
         } else {
-            Swal.ShowErrorAlert();
+
+            UsersJpaController controller = new UsersJpaController(PersistenceManager.
+                    getInstance().getEntityManagerFactory());
+
+            userData.setFirstname(firstNameTF.getText());
+            userData.setLastname(lastNameTF.getText());
+            userData.setAge(Integer.parseInt(ageTF.getText()));
+            userData.setEmail(emailTF.getText());
+            userData.setPhone(phoneTF.getText());
+            userData.setGender(malerb.isSelected() ? "male" : "female");
+
+            try {
+                controller.edit(userData);
+                accepted = true;
+            } catch (Exception e) {
+                accepted = false;
+                e.printStackTrace();
+            }
+
+            if (accepted) {
+                Swal.ShowSuccessAlert("Updated");
+                View.ViewManager.homePage.changeSceneToHomePage();
+            } else {
+                Swal.ShowErrorAlert();
+            }
+            userData = null;
         }
+
     }
 
     public void clearInputs() {
@@ -130,10 +188,6 @@ public class PatientControlPageController implements Initializable {
         phoneTF.setText("");
         ageTF.setText("");
         emailTF.setText("");
-    }
-
-    void setUserData(Users usertoEdit) {
-       this.userData = usertoEdit;
     }
 
 }

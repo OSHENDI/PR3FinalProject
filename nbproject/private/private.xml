@@ -2,6 +2,32 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/ManagementSystem/src/Controller/AppointControlPageController.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/ManagementSystem/src/Controller/PatientPageController.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/ManagementSystem/src/managementsystem/ManagementSystem.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/ManagementSystem/src/View/userLoginPage.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/ManagementSystem/src/Model/Appointments.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/ManagementSystem/src/View/HomePage.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/ManagementSystem/src/Model/BookedAppointments.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/ManagementSystem/src/View/userFXML/AppointmentsPage.fxml</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/ManagementSystem/src/CSS/inputStyles.css</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/ManagementSystem/src/Controller/AppointmentsJpaController.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/ManagementSystem/src/Controller/AppointmentsPageController.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/ManagementSystem/src/View/userFXML/BookedAppointsPage.fxml</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/ManagementSystem/src/Model/PersistenceManager.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/ManagementSystem/src/View/ViewManager.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/ManagementSystem/src/Controller/UsersJpaController.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/ManagementSystem/src/View/userFXML/PatientBookedPage.fxml</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/ManagementSystem/src/Controller/PatientControlPageController.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/ManagementSystem/src/View/userFXML/AppointControlPage.fxml</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/ManagementSystem/src/Controller/BookedAppointmentsJpaController.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/ManagementSystem/src/Model/Users.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/ManagementSystem/src/View/PatientHomePage.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/ManagementSystem/src/Controller/BookedAppointsPageController.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/ManagementSystem/src/Controller/LoginpageController.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/ManagementSystem/src/Controller/PatientBookedPageController.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/ManagementSystem/src/Controller/HomePageController.java</file>
+        </group>
     </open-files>
 </project-private>

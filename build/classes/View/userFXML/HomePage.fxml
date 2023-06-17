@@ -86,7 +86,7 @@
                   <Image url="@../../images/editicon.png" />
                </image>
             </ImageView>
-            <Label layoutX="53.0" layoutY="78.0" prefHeight="27.0" prefWidth="235.0" text="SDA" textFill="WHITE">
+            <Label fx:id="userLabel" layoutX="53.0" layoutY="78.0" prefHeight="27.0" prefWidth="235.0" text="User" textFill="WHITE">
                <font>
                   <Font name="Arial" size="23.0" />
                </font>
